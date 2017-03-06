@@ -77,6 +77,7 @@ if __name__ == '__main__':  # parser
     from base import Image
     edges = edgemtx()
     trans = TransMatrix()
+    frc = 0
     while(True):
         try:
             inp = raw_input('')
@@ -104,7 +105,6 @@ if __name__ == '__main__':  # parser
             drawEdges(edges, img)
             img.display()
         elif inp == 'save':
-            print edges
             inp = raw_input('').strip()
             img = Image(500, 500)
             drawEdges(edges, img)
@@ -112,3 +112,9 @@ if __name__ == '__main__':  # parser
                 img.savePpm(inp)
             else:
                 img.saveAs(inp)
+        elif inp == 'saveframe':
+            inp = raw_input('').strip()
+            img = Image(500, 500)
+            drawEdges(edges, img)
+            img.savePpm('%s%d.ppm' % (inp, frc))
+            frc += 1
