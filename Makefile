@@ -1,8 +1,8 @@
-run: transform.py script
-	python transform.py < script &> /dev/null
+run: transform.py script_dw
+	python transform.py < script_dw
 
 gif: transform.py animscript
 	-mkdir anim
 	python transform.py < animscript
-	eval $("convert -delay 10 -loop 0 anim/anim{0..71}.ppm rot.gif")
+	bash "convert -delay 10 -loop 0 anim/anim{0..71}.ppm rot.gif"
 	rm -rf anim
